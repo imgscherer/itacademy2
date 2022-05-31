@@ -14,7 +14,7 @@ public class MedicineRepository {
 
     public List<MedicineEntity> fileRead() {
 
-        String path = "C:\\Users\\Gabriel\\eclipse-workspace\\itAcademyGabrielScherer\\src\\files\\TA_PRECO_MEDICAMENTO.csv";
+        String path = "C:\\Users\\Gabriel\\eclipse-workspace\\itAcademyGabrielScherer\\src\\files\\TA_PRECO_MEDICAMENTO (3).csv";
 
         List<MedicineEntity> listMedicines = new ArrayList<>();
 

@@ -1,12 +1,10 @@
 package services;
 
+import repositories.MedicineRepository;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import entities.MedicineEntity;
-import repositories.MedicineRepository;
 
 public class MedicineService {
 
@@ -21,13 +19,11 @@ public class MedicineService {
 
         List<MedicineBO> foundMedicine = new ArrayList<>();
 
-        medicines.forEach(medicine -> {
-            medicine.getSubstances().forEach(sub -> {
-                if(sub.contains(name)){
-                    foundMedicine.add(medicine);
-                }
-            });
-        });
+        medicines.forEach(medicine -> medicine.getSubstances().forEach(sub -> {
+            if(sub.contains(name)){
+                foundMedicine.add(medicine);
+            }
+        }));
 
         System.out.println(foundMedicine);
 
