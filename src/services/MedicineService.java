@@ -1,5 +1,6 @@
 package services;
 
+import entities.MedicineEntity;
 import repositories.MedicineRepository;
 
 import java.util.ArrayList;
@@ -8,16 +9,15 @@ import java.util.stream.Collectors;
 
 public class MedicineService {
 
-    public List<MedicineBO> getAllMedicines(){
+    public List<MedicineEntity> getAllMedicines(){
         MedicineRepository repository = new MedicineRepository();
-        MedicineConverter converter = new MedicineConverter();
-        return repository.fileRead().stream().map(converter::toBO).collect(Collectors.toList());
+        return repository.fileRead().stream().collect(Collectors.toList());
     }
 
-    public List<MedicineBO> getByName(String name){
-        List<MedicineBO> medicines = getAllMedicines();
+    public List<MedicineEntity> getByName(String name){
+        List<MedicineEntity> medicines = getAllMedicines();
 
-        List<MedicineBO> foundMedicine = new ArrayList<>();
+        List<MedicineEntity> foundMedicine = new ArrayList<>();
 
         medicines.forEach(medicine -> medicine.getSubstances().forEach(sub -> {
             if(sub.contains(name)){
@@ -30,9 +30,9 @@ public class MedicineService {
         return foundMedicine;
     }
 
-    /*public List<MedicineBO> getByCode(Long code) {
+    /*public List<MedicineEntity> getByCode(Long code) {
 
-        List<MedicineBO> medicines = getAllMedicines();
+        List<MedicineEntity> medicines = getAllMedicines();
 
         Collections.singletonList(medicines).stream().findFirst();
 

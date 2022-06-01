@@ -14,7 +14,7 @@ public class MedicineRepository {
 
     public List<MedicineEntity> fileRead() {
 
-        String path = "C:\\Users\\Gabriel\\eclipse-workspace\\itAcademyGabrielScherer\\src\\files\\TA_PRECO_MEDICAMENTO (3).csv";
+        String path = "C:\\Users\\Gabriel\\eclipse-workspace\\itAcademyGabrielScherer\\src\\files\\TA_PRECO_MEDICAMENTO.csv";
 
         List<MedicineEntity> listMedicines = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class MedicineRepository {
                     medicine.addSubstancies(line.split(";")[0]);
                 }
                 listMedicines.add(medicine);
-                //System.out.println(listMedicines);
+                System.out.println(listMedicines);
             });
 
         } catch (IOException e) {
@@ -47,8 +47,9 @@ public class MedicineRepository {
     }
 
     private MedicineEntity buildDataAboutMedicine(String s) {
-        String[] lineForMedicine = s.split(";");
-        int dataAcessControl = 1;
+        Integer dataAcessControl = 1;
+        String[] lineForMedicine = s.replace(",", ".").split(";");
+
 
         String cnpj = lineForMedicine[dataAcessControl++];
         String laboratory = lineForMedicine[dataAcessControl++];
@@ -56,7 +57,7 @@ public class MedicineRepository {
         String register = lineForMedicine[dataAcessControl++];
         String ean1 = lineForMedicine[dataAcessControl++];
         String ean2 = lineForMedicine[dataAcessControl++];
-        String ean3 =lineForMedicine[dataAcessControl++];
+        String ean3 = lineForMedicine[dataAcessControl++];
         String product = lineForMedicine[dataAcessControl++];
         String apresentation = lineForMedicine[dataAcessControl++];
         String terapeuticalClass = lineForMedicine[dataAcessControl++];
