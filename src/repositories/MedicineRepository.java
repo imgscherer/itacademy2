@@ -36,7 +36,7 @@ public class MedicineRepository {
                     medicine.addSubstancies(line.split(";")[0]);
                 }
                 listMedicines.add(medicine);
-                System.out.println(listMedicines);
+                //System.out.println(listMedicines);
             });
 
         } catch (IOException e) {
